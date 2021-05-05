@@ -1,4 +1,4 @@
-package week2;
+package study.week2;
 
 import java.io.*;
 import java.util.LinkedList;

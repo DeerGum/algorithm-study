@@ -1,4 +1,4 @@
-package week1;
+package study.week1;
 
 import java.io.*;
 import java.util.StringTokenizer;
