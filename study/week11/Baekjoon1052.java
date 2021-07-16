@@ -24,11 +24,11 @@ public class Baekjoon1052 {
         
         int newBottles = 0;
 
-		  while(Integer.bitCount(n) > k) {
-			  n++;
+		  while(Integer.bitCount(n++) > k) {
 			  newBottles++;
 		  }
         
         bw.write(newBottles+"\n");
+        bw.flush();
     }
 }
