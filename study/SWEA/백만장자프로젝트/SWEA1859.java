@@ -1,10 +1,10 @@
-package study.SWEA;
+package study.SWEA.백만장자프로젝트;
 
 import java.io.*;
 import java.util.StringTokenizer;
 
 /**
- * 문제이름 : 1859. 백만 장자 프로젝트
+ * 문제이름 : 백만 장자 프로젝트
  * 링크 : https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5LrsUaDxcDFAXc
  */
 

@@ -1,4 +1,4 @@
-package study.SWEA;
+package study.SWEA.달팽이숫자;
 
 import java.io.*;
 
