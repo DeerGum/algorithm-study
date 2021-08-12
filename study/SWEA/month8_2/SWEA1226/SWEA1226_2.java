@@ -1,4 +1,4 @@
-package study.SWEA.month8_1.SWEA1226;
+package study.SWEA.month8_2.SWEA1226;
 
 import java.io.*;
 import java.util.LinkedList;

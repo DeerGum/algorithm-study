@@ -47,14 +47,14 @@ public class SWEA1226 {
             clear = true;
             return;
         }
-        
+
         maze[r][c] = -1;
 
         for (int i = 0; i < dir.length; i++) {
             int R = r + dir[i][0];
             int C = c + dir[i][1];
 
-            if (R < 0 || R >= n || R < 0 || R >= n || maze[R][C] == 1 || maze[R][C] == -1) 
+            if (R < 0 || R >= n || C < 0 || C >= n || maze[R][C] == 1 || maze[R][C] == -1) 
                 continue;
             
             dfs(R, C);
