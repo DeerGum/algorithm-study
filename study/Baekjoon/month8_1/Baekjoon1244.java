@@ -1,4 +1,4 @@
-package study.Baekjoon;
+package study.Baekjoon.month8_1;
 
 import java.io.*;
 import java.util.StringTokenizer;

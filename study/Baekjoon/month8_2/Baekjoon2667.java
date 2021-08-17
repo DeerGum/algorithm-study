@@ -1,4 +1,4 @@
-package study.Baekjoon;
+package study.Baekjoon.month8_2;
 
 import java.io.*;
 import java.util.Collections;
