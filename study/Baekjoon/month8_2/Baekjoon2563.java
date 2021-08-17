@@ -1,4 +1,4 @@
-package study.Baekjoon;
+package study.Baekjoon.month8_2;
 
 import java.io.*;
 import java.util.StringTokenizer;
@@ -55,6 +55,18 @@ public class Baekjoon2563 {
 }
 
 /*
+10
+10
+7
+10
+7
+2
+10
+10
+5
+10
+5
+2
 
 
 */
