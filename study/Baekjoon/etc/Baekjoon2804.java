@@ -4,8 +4,8 @@ import java.io.*;
 import java.util.StringTokenizer;
 
 /**
- * 문제이름 : 
- * 링크 : https://www.acmicpc.net/problem/
+ * 문제이름 : 크로스워드 만들기
+ * 링크 : https://www.acmicpc.net/problem/2804
  */
 
 public class Baekjoon2804 {
