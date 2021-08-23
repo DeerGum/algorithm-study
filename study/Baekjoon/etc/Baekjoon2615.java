@@ -20,7 +20,6 @@ public class Baekjoon2615 {
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		// 구현하세요.
 		StringTokenizer st;
 		board = new int[N][N];
 		memo = new int[N][N][4];
