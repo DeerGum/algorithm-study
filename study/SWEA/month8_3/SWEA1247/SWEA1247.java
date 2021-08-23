@@ -1,7 +1,6 @@
 package study.SWEA.month8_3.SWEA1247;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 /**
@@ -41,26 +40,35 @@ public class SWEA1247 {
             }
 
             min = Integer.MAX_VALUE;
-            perm(0, new boolean[N], new ArrayList<String>());
-            System.out.println();
-
+            perm(0, new boolean[N], new int[N]);
+            bw.write("#"+t+" "+min+"\n");
         }
+        bw.close();
+    }
+    public static int distance(int[] s, int[] t) {
+        return Math.abs(s[0]-t[0]) + Math.abs(s[1]-t[1]);
     }
 
-    public static void perm(int cnt, boolean[] v, ArrayList<String> list) {
+    public static void perm(int cnt, boolean[] v, int[] p) {
         if (cnt == N) {
-            
+            int len = 0;
+            //회사에서 첫번째 고객까지
+            len += distance(company, customer[p[0]]);
+            //첫번째 고객에서 마지막 고객까지
+            for (int i = 0; i < N-1; i++) 
+                len += distance(customer[p[i]], customer[p[i+1]]);
+            //마지막 고객에서 집까지
+            len += distance(customer[p[N-1]], home);
+            min = Math.min(min, len);
             return;
         }
         for (int i = 0; i < N; i++) {
             if (v[i]) 
                 continue;
             v[i] = true;
-            list.add((i+2)+"");
-            perm(cnt+1, v,list);
+            p[cnt] = i;
+            perm(cnt+1, v, p);
             v[i] = false;
-            list.remove((i+2)+"");
-            
         }
     }
 }

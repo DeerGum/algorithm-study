@@ -5,13 +5,13 @@ import java.util.StringTokenizer;
 
 /**
  * 문제이름 : 색종이 만들기
- * 링크 : https://www.acmicpc.net/problem/
+ * 링크 : https://www.acmicpc.net/problem/2630
  */
 
 public class Baekjoon2630 {
     static int N;
     static int[][] paper;
-    static int W, B;
+    static int W, B;    //흰색, 파란색 종이 갯수
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -35,7 +35,8 @@ public class Baekjoon2630 {
     }
 
     public static void color(int r, int c, int width) {
-        if (width == 1 || sameColor(r,c,width)) {
+        //기저조건 - 길이가 1이거나 범위안쪽이 같은 종이로만 구성되어있으면
+        if (width == 1 || sameColor(r,c,width)) {   
             if (paper[r][c] == 0) {
                 W++;
             } else if (paper[r][c] == 1) {
@@ -44,12 +45,13 @@ public class Baekjoon2630 {
             return;
         }
         int w = width/2;
-        color(r, c, w);
-        color(r, c+w, w);
-        color(r+w, c, w);
-        color(r+w, c+w, w);
+        color(r, c, w); //2사분면
+        color(r, c+w, w);//1사분면
+        color(r+w, c, w);//3사분면
+        color(r+w, c+w, w);//4사분면
     }
 
+    //색깔이 같은지 판별
     public static boolean sameColor(int r, int c, int width) {
         int color = paper[r][c];
         for (int i = r; i < r+width; i++) {
