@@ -1,4 +1,4 @@
-package study.Baekjoon.etc.SWEA1234;
+package study.SWEA.etc.SWEA1234;
 
 import java.io.*;
 import java.util.StringTokenizer;
