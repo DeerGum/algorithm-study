@@ -56,7 +56,7 @@ public class Baekjoon16236 {
         int minR = -1;  //먹이의 행
         int minC = -1;  //먹이의 열
         while (!q.isEmpty()) {
-        int[] t = q.poll();
+            int[] t = q.poll();
             
             if (map[t[0]][t[1]] > 0 && map[t[0]][t[1]] < currSize) {    //먹이를 발견하면
                 if (minMove == -1) {    //먹이를 처음 발견
