@@ -1,4 +1,4 @@
-//package study.SWEA.month9_2.SWEA1767;
+package study.SWEA.month9_2.SWEA1767;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -45,6 +45,9 @@ public class SWEA1767 {
     }
 
     public static void dfs(int coreCnt, int coreIdx, int len) {
+        if (core.size() - coreIdx + coreCnt < maxCoreCnt) // 남은 코어를 전부 더해도 현재 최대 코어 갯수보다 작으면 탐색 종료
+            return;
+        
         if (coreIdx == core.size()) {
             if (maxCoreCnt < coreCnt) {
                 maxCoreCnt = coreCnt;
