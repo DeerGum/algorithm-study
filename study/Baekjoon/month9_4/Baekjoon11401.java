@@ -40,7 +40,7 @@ public class Baekjoon11401 {
         long re = 1L;
         re *= fact(n);
         re %= P;
-        re *= power(fact(n-k), P-2);
+        re *= power(fact(n - k), P - 2);
         re %= P;
         re *= power(fact(k), P - 2);
         re %= P;
