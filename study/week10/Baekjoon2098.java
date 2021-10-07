@@ -56,8 +56,7 @@ public class Baekjoon2098 {
                 min = Math.min(distance, min);
             }
         }
-        dp[curr][visited] = min;
-        return dp[curr][visited];
+        return dp[curr][visited] = min;
     }
 }
 
