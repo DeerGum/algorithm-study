@@ -14,6 +14,7 @@ public class SWEA1865 {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st;
         
+        
     }
 }
 
