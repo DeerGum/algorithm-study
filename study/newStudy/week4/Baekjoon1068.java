@@ -56,12 +56,10 @@ public class Baekjoon1068 {
             return;
         }
 
-        boolean isLeafNode = false;
         for (int i = 0; i < search[curr].size(); i++) {
             int next = search[curr].get(i);
             if (next == cutNode) 
                 continue;
-            
             
             dfs(next);
         }
