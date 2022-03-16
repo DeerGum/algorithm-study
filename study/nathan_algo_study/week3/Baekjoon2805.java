@@ -26,15 +26,17 @@ public class Baekjoon2805 {
         tree = new long[N];
         st = new StringTokenizer(br.readLine());
 
-        for (int i = 0; i < N; i++)
+        long maxValue = 0;
+        for (int i = 0; i < N; i++) {
             tree[i] = Long.parseLong(st.nextToken());
+            maxValue = Math.max(tree[i], maxValue);
+        }
 
-        Arrays.sort(tree);
         maxHeight = 0;
-
-        binarySearch(0, tree[N - 1]);
+        binarySearch(0, maxValue);
 
         System.out.println(maxHeight);
+        br.close();
     }
 
     public static void binarySearch(long start, long end) {
