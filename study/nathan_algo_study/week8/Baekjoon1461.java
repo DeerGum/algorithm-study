@@ -1,6 +1,9 @@
 package study.nathan_algo_study.week8;
 
 import java.io.*;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 /**
@@ -20,10 +23,51 @@ public class Baekjoon1461 {
         books = new int[N];
 
         st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < N; i++)
+        int maxValue = 0;
+        for (int i = 0; i < N; i++) {
             books[i] = Integer.parseInt(st.nextToken());
+            if (Math.abs(books[i]) > Math.abs(maxValue))
+                maxValue = books[i];
+        }
 
+        Arrays.sort(books);
 
+        Queue<Integer> pos = new LinkedList<>();
+        Queue<Integer> neg = new LinkedList<>();
+
+        for (int i = N - 1; i >= 0; i--) {
+            if (books[i] < 0)
+                break;
+            pos.add(books[i]);
+        }
+
+        for (int i = 0; i < N; i++) {
+            if (books[i] > 0)
+                break;
+            neg.add(Math.abs(books[i]));
+        }
+
+        int result = 0;
+        result += getResult(pos);
+        result += getResult(neg);
+
+        result -= Math.abs(maxValue);
+        System.out.println(result);
+    }
+
+    private static int getResult(Queue<Integer> q) {
+        int result = 0;
+        while (!q.isEmpty()) {
+            int book = q.poll();
+            for (int i = 0; i < M - 1; i++) {
+                q.poll();
+                if (q.isEmpty())
+                    break;
+            }
+
+            result += book * 2;
+        }
+        return result;
     }
 }
 
@@ -35,7 +79,7 @@ public class Baekjoon1461 {
 58
 39
 
-34 +
+34 + 58 + 39 = 92 + 39 = 131
 
 
 */
