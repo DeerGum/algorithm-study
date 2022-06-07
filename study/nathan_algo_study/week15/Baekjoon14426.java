@@ -12,7 +12,6 @@ import java.util.StringTokenizer;
 
 public class Baekjoon14426 {
     static int N, M;
-    static String[] S;
     static Trie trie;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -22,7 +21,6 @@ public class Baekjoon14426 {
         M = Integer.parseInt(st.nextToken());
 
         trie = new Trie();
-        S = new String[N];
         for (int i = 0; i < N; i++)
             trie.insert(br.readLine());
 

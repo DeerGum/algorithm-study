@@ -41,7 +41,7 @@ public class Baekjoon9372 {
 
             cnt = 0;
             dfs(1);
-            bw.write(cnt+"\n");
+            bw.write(cnt+"\n"); // N - 1
         }
         bw.close();
 
