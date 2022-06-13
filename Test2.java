@@ -7,8 +7,10 @@ public class Test2 {
 
 		int num = Integer.parseInt(br.readLine());
 
-		String result = formatting(num);
-		System.out.println(result);
+//		String result = formatting(num);
+//		System.out.println(result);
+
+		System.out.println("1235".compareTo("124"));
 	}
 
 	public static String formatting(int num) {
