@@ -1,7 +1,6 @@
 package study.nathan_algo_study.week17;
 
 import java.io.*;
-import java.util.StringTokenizer;
 
 /**
  * 문제이름 : 책 페이지
@@ -11,10 +10,46 @@ import java.util.StringTokenizer;
 public class Baekjoon1019 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        StringTokenizer st;
 
+        int n = Integer.parseInt(br.readLine());
 
+        int[] nums = new int[10];
+        int start = 1;
+        int point = 1;
+
+        while (start <= n) {
+            while (n % 10 != 9 && start <= n) {
+                cal(n, nums, point);
+                n--;
+            }
+
+            if (n < start)
+                break;
+
+            while (start % 10 != 0 && start <= n) {
+                cal(start, nums, point);
+                start++;
+            }
+
+            start /= 10;
+            n /= 10;
+
+            for (int i = 0; i < 10; i++)
+                nums[i] += (n - start + 1) * point;
+
+            point *= 10;
+        }
+
+        for (int i = 0; i < 10; i++)
+            System.out.print(nums[i] + " ");
+        System.out.println();
+    }
+
+    public static void cal(int n, int[] arr, int idx) {
+        while (n > 0) {
+            arr[n % 10] += idx;
+            n /= 10;
+        }
     }
 }
 
