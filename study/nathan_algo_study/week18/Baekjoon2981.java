@@ -44,6 +44,17 @@ public class Baekjoon2981 {
 }
 
 /*
+A = m * a + r1
+B = m * b + r2
+
+A - B = m * (a - b) + (r1 - r2)
+
+나머지는 같아야하므로 r1 - r2 = 0
+즉 A - B = m * (a - b)
+
+m은 (A - B) 의 약수 즉 A와 B의 공약수
+
+
 
 
 
