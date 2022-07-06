@@ -51,7 +51,7 @@ public class Baekjoon1941 {
         Queue<int[]> q = new LinkedList<>();
         initVisited(pos);
         q.add(new int[]{pos[0] / 5, pos[0] % 5});
-        checked[pos[0] / 5][pos[0] % 5] = false;
+        checked[pos[0] / 5][pos[0] % 5] = false;    //1차원으로 관리할 수 있음
         int[] curr;
         int searchCnt = 0;
         while (!q.isEmpty()) {
@@ -93,6 +93,15 @@ public class Baekjoon1941 {
 10 11 12 13 14
 15 16 17 18 19
 20 21 22 23 24
+
+0 ~ 24
+
+25C7
+
+(이다솜파 4명 and 서로 붙어있는지) 경우의수+1
+
+
+
 
 
 */

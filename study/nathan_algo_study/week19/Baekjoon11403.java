@@ -30,6 +30,8 @@ public class Baekjoon11403 {
                 if (k == i)
                     continue;
                 for (int j = 0; j < N; j++) {
+                    if (k == j)
+                        continue;
                     graph[i][j] = (graph[i][k] + graph[k][j] > 1)? 1 : graph[i][j];
                 }
             }
