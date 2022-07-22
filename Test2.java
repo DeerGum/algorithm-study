@@ -1,31 +1,61 @@
 import java.io.*;
+import java.util.StringTokenizer;
 
 
 public class Test2 {
-	public static void main(String[] args) throws IOException {
+	static int N, H;
+	static int [] up;
+	static int [] down;
+	static int min;//최솟값
+	static int count; //최솟값을 갖게 하는 구간들의 개수
+
+	public static void main(String[] args) throws IOException{
+
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		int num = Integer.parseInt(br.readLine());
+		StringTokenizer token = new StringTokenizer(br.readLine());
 
-//		String result = formatting(num);
-//		System.out.println(result);
+		N = Integer.parseInt(token.nextToken());
+		H = Integer.parseInt(token.nextToken());
 
-		System.out.println("1235".compareTo("124"));
-	}
+		up = new int[H+1];
+		down = new int[H+2];
 
-	public static String formatting(int num) {
-		
-		StringBuilder format = new StringBuilder(String.valueOf(num));
-		int mod = format.length() % 3;
-
-		for (int i = 1; i < format.length(); i++) {
-			if (i % 3 == mod) {
-				format.insert(i, ',');
-				
-			}
+		for(int i = 0; i < N/2; i++) {
+			int upId = Integer.parseInt(br.readLine());
+			int downId = Integer.parseInt(br.readLine());
+			up[upId]++;
+			down[H-downId+1]++;
 		}
 
-		return format.toString();
+		//각 높이에 대해서 누적합
+		for (int i = 1; i <= H; i++) {
+			up[i] += up[i-1];
+		}
+
+		for (int i = H; i >= 1; i--) {
+			down[i] += down[i+1];
+		}
+
+		min = N;
+
+		for(int i = 1; i <= H; i++) {
+
+			//구간에 대한 카운트
+			int upCnt = up[H]-up[i-1];
+			int downCnt = down[1]-down[i+1];
+
+			int totalCnt = upCnt + downCnt;
+
+			if(totalCnt < min) {
+				min = totalCnt;
+				count = 1;
+			}else if(totalCnt == min)
+				count++;
+
+		}
+		System.out.println(min + " "+ count);
+
 	}
 }
 

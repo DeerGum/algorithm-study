@@ -28,7 +28,7 @@ public class Baekjoon1780 {
             }
         }
 
-        check(0,0,N);
+        check(0, 0, N);
 
         for (int i = 0; i < 3; i++)
             System.out.println(paperCnt[i]);
