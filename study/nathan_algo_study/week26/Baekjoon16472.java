@@ -52,16 +52,15 @@ public class Baekjoon16472 {
                 if (map.containsKey(c)) {
                     int currCnt = map.get(c);
                     map.put(c, currCnt + 1);
-                } else {
+                } else
                     map.put(c, 1);
-                }
                 currLen++;
             } else {
                 char c = str.charAt(left++);
                 int currCnt = map.get(c);
-                if (currCnt == 1) {
+                if (currCnt == 1)
                     map.remove(c);
-                } else
+                 else
                     map.put(c, currCnt - 1);
                 currLen--;
             }

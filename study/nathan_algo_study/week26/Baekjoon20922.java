@@ -13,7 +13,6 @@ public class Baekjoon20922 {
     static int[] arr;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         N = Integer.parseInt(st.nextToken());
@@ -21,17 +20,27 @@ public class Baekjoon20922 {
         arr = new int[N];
         st = new StringTokenizer(br.readLine());
 
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < N; i++)
             arr[i] = Integer.parseInt(st.nextToken());
-        }
 
-
+        System.out.println(solution());
     }
 
     public static int solution() {
+        int[] cnts = new int[100001];
+        int left = 0;
+        int right = 0;
+        int maxLen = 0;
 
+        while (right < N) {
+            while (right < N && cnts[arr[right]] + 1 <= K)
+                cnts[arr[right++]]++;
 
-        return 0;
+            maxLen = Math.max(maxLen, right - left);
+            cnts[arr[left++]]--;
+        }
+
+        return maxLen;
     }
 }
 
