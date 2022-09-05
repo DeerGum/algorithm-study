@@ -10,22 +10,9 @@ public class Test3 {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        String str = null;
-        if (str == null) {
-            throw new NullPointerException();
-        } else {
-            str = "hello";
-        }
-
-
-        try {
-            System.out.println(2/0);
-        }catch (ArithmeticException e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        } finally {
-
-        }
+        int n = 8;
+        n =  (n - (1 << 4) >= 0)? n - (1 << 4) : 0;
+        System.out.println(n);
 
 
 
@@ -35,5 +22,12 @@ public class Test3 {
 }
 
 /*
+1101
+0100
+1101
+
+0 1 = 0
+1 1 = 0
+
 
 */
