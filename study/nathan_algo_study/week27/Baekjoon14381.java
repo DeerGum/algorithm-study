@@ -37,7 +37,7 @@ public class Baekjoon14381 {
         for (int bit = 0; bit < (1 << N * M); bit++) {
             int sum = 0;
 
-            for (int i = 0; i < N; i++) {
+            for (int i = 0; i < N; i++) {   //가로의 총합
                 int curr = 0;
                 for (int j = 0; j < M; j++) {
                     int k = i * M + j;
@@ -52,7 +52,7 @@ public class Baekjoon14381 {
                 sum += curr;
             }
 
-            for (int j = 0; j < M; j++) {
+            for (int j = 0; j < M; j++) {   //세로의 총합
                 int curr = 0;
                 for (int i = 0; i < N; i++) {
                     int k = i * M + j;

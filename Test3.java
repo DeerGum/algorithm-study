@@ -10,9 +10,7 @@ public class Test3 {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int n = 8;
-        n =  (n - (1 << 4) >= 0)? n - (1 << 4) : 0;
-        System.out.println(n);
+        System.out.println((15 << 1) & ~(1 << 4));
 
 
 

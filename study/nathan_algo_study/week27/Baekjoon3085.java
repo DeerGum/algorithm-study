@@ -30,7 +30,7 @@ public class Baekjoon3085 {
     }
 
     public static void solution() {
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < N; i++) {   //가로 탐색
             for (int j = 0; j < N - 1; j++) {
                 if (map[i][j] != map[i][j + 1]) {
                     char temp1 = map[i][j];
@@ -47,7 +47,7 @@ public class Baekjoon3085 {
             }
         }
 
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < N; i++) {   //세로 탐색
             for (int j = 0; j < N - 1; j++) {
                 if (map[j][i] != map[j+1][i]) {
                     char temp1 = map[j][i];
