@@ -1,6 +1,7 @@
 package study.nathan_algo_study.week35;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 /**
@@ -9,51 +10,45 @@ import java.util.StringTokenizer;
  */
 
 public class Baekjoon5639 {
-
+    static ArrayList<Integer> tree;
+    static StringBuilder sb;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        StringTokenizer st;
+        String input;
+        tree = new ArrayList<>();
+        sb = new StringBuilder();
+        while ((input = br.readLine()) != null && input.length() != 0)
+            tree.add(Integer.parseInt(input));
 
-
+        dfs(0, tree.size()-1);
+        System.out.println(sb.toString());
     }
 
-    public static void postOrder() {
+    //후위 순회
+    public static void dfs(int leftIdx, int rightIdx) {
+        if (leftIdx > rightIdx)
+            return;
 
-    }
-}
+        int mid = leftIdx + 1;
+        while (mid <= rightIdx && tree.get(mid) < tree.get(leftIdx))
+            mid++;
 
-class Node {
-    public int value;
-    public Node left;
-    public Node right;
-
-    public Node(int value) {
-        this.value = value;
-        this.left = null;
-        this.right = null;
-    }
-}
-
-class Tree {
-    Node head;
-    int size;
-
-    public Tree() {
-        this.head = null;
-        this.size = 0;
-    }
-
-    public void push(Node node) {
-        if (head == null)
-            head = node;
-        else {
-            Node curr = head;
-
-        }
+        dfs(leftIdx+1, mid - 1);    //왼쪽 서브트리
+        dfs(mid, rightIdx);                      //오른쪽 서브트리
+        sb.append(tree.get(leftIdx)+"\n");       //루트
     }
 }
+
 
 /*
 
+50 30 24 5 28 45 98 52 60
+^                ^
+
+
+30 24 5 28 45
+^          ^
+
+52 60
+^  ^
 */

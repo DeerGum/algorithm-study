@@ -43,4 +43,8 @@ public class Baekjoon13116 {
 521
 521
 
+0 1 2 3 4 5 6 7 8
+x 1
+
+
 */
