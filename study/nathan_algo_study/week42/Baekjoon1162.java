@@ -1,8 +1,7 @@
 package study.nathan_algo_study.week42;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.StringTokenizer;
+import java.util.*;
 
 /**
  * 문제이름 : 도로포장
@@ -12,17 +11,20 @@ import java.util.StringTokenizer;
 public class Baekjoon1162 {
     static int N, M, K;
     static ArrayList<Node>[] graph;
+    static long[][] dist;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
         K = Integer.parseInt(st.nextToken());
         graph = new ArrayList[N+1];
-        for (int i = 0; i < N; i++)
+        dist = new long[N+1][K+1];
+        for (int i = 0; i <= N; i++) {
             graph[i] = new ArrayList<>();
+            Arrays.fill(dist[i], Long.MAX_VALUE);
+        }
 
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());
@@ -31,37 +33,74 @@ public class Baekjoon1162 {
             int to = Integer.parseInt(st.nextToken());
             int weight = Integer.parseInt(st.nextToken());
 
-            graph[from].add(new Node(from, to, weight));
-            graph[to].add(new Node(to, from, weight));
+            graph[from].add(new Node(to, weight));
+            graph[to].add(new Node(from, weight));
         }
 
-        int[][] dist = new int[N+1][N+1];
-        for (int k = 0; k < N; k++) {
-            for (int i = 0; i < N; i++) {
-                if (i == k)
-                    continue;
-                for (int j = 0; j < N; j++) {
-                    if (i == j)
-                        continue;
-                    dist[i][j] = Math.min(dist[i][k] + dist[k][j], dist[i][j])
+        dijkstra(1);
+
+        long result = Long.MAX_VALUE;
+        //
+        for (int i = 1; i <= K; i++) {
+            result = Math.min(result, dist[N][i]);
+        }
+
+        System.out.println(result);
+    }
+
+    public static void dijkstra(int node) {
+        PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparingLong(o -> o.weight));
+        pq.offer(new Node(node, 0));
+        dist[node][0] = 0;
+
+        while (!pq.isEmpty()) {
+            Node curr = pq.poll();
+
+            //현재 노드의 가중치가 dist에 저장된 가중치보다 크면 무시함
+            if (curr.weight > dist[curr.to][curr.count])
+                continue;
+
+            for (Node next : graph[curr.to]) {
+                //도로를 포장하지 않은 경우 (count)
+                if (dist[next.to][curr.count] > curr.weight + next.weight) {
+                    dist[next.to][curr.count] = curr.weight + next.weight;
+                    pq.offer(new Node(next.to, dist[next.to][curr.count], curr.count));
+                }
+                //도로를 포장했을 경우 (count + 1)
+                if (curr.count < K && dist[next.to][curr.count + 1] > curr.weight) {
+                    dist[next.to][curr.count + 1] = curr.weight;
+                    pq.add(new Node(next.to, curr.weight, curr.count + 1));
                 }
             }
         }
+
     }
 }
 
 class Node {
-    int from;
     int to;
-    int weight;
+    long weight;
+    int count;
 
-    public Node(int from, int to, int weight) {
-        this.from = from;
+    public Node(int to, long weight) {
         this.to = to;
         this.weight = weight;
+        this.count = 0;
+    }
+    public Node(int to, long weight, int count) {
+        this.to = to;
+        this.weight = weight;
+        this.count = count;
     }
 }
 
 /*
+우선순위큐
+dist[도시인덱스][포장된도로개수]
 
+0 -> 4
+
+2차원배열 3차원 for문
+10000 x 10000
+dist[start][end] = 최소거리
 */

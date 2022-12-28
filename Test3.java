@@ -7,10 +7,11 @@ import java.util.Optional;
 public class Test3 {
     public static void main(String[] args) throws IOException {
 
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        System.out.println((15 << 1) & ~(1 << 4));
+        long result = 1;
+        for (int i = 1; i <= 20; i++) {
+            result *= i;
+            System.out.println(result);
+        }
 
 
 

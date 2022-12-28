@@ -10,10 +10,7 @@ import java.io.*;
 public class Baekjoon17175 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-
         int n = Integer.parseInt(br.readLine());
-
         int[] dp = new int[n+1];
 
         if (n < 2)
@@ -48,5 +45,6 @@ public class Baekjoon17175 {
 5
 4 3
 
+3 5 9 ...
 
 */

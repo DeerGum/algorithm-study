@@ -10,8 +10,8 @@ import java.io.*;
 public class Baekjoon1676 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        int n = Integer.parseInt(br.readLine());
+//        int n = Integer.parseInt(br.readLine());
+        int n = 125;
 
         int cnt = 0;
 
@@ -19,6 +19,7 @@ public class Baekjoon1676 {
             cnt += n / 5;
             n /= 5;
         }
+
         System.out.println(cnt);
     }
 }

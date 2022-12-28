@@ -44,5 +44,11 @@ public class Baekjoon1915 {
 }
 
 /*
+2가지
+
+
+
+
+
 
  */
