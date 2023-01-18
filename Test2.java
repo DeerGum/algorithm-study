@@ -1,62 +1,78 @@
 import java.io.*;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 
 public class Test2 {
-	static int N, H;
-	static int [] up;
-	static int [] down;
-	static int min;//최솟값
-	static int count; //최솟값을 갖게 하는 구간들의 개수
-
-	public static void main(String[] args) throws IOException{
-
+	static int[] pointer;
+	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		StringBuilder sb = new StringBuilder();
+		int N = Integer.parseInt(st.nextToken());
+		int M = Integer.parseInt(st.nextToken());
+		int Q = Integer.parseInt(st.nextToken());
 
-		StringTokenizer token = new StringTokenizer(br.readLine());
-
-		N = Integer.parseInt(token.nextToken());
-		H = Integer.parseInt(token.nextToken());
-
-		up = new int[H+1];
-		down = new int[H+2];
-
-		for(int i = 0; i < N/2; i++) {
-			int upId = Integer.parseInt(br.readLine());
-			int downId = Integer.parseInt(br.readLine());
-			up[upId]++;
-			down[H-downId+1]++;
+		// 1. 포인터 배열 선언 (idx: 포인터 번호 / val: 객체 번호)
+		pointer = new int[M];
+		for (int i = 0; i < M; i++) {
+			pointer[i] = Integer.parseInt(br.readLine());
 		}
 
-		//각 높이에 대해서 누적합
-		for (int i = 1; i <= H; i++) {
-			up[i] += up[i-1];
+		// 2. 명령어 토큰 분리
+		for (int i = 0; i < Q; i++) {
+			st = new StringTokenizer(br.readLine());
+			String cmd = st.nextToken();
+			int x, y;
+			switch (cmd) {
+				case "assign" :
+					x = Integer.parseInt(st.nextToken()) - 1;
+					y = Integer.parseInt(st.nextToken()) - 1;
+					assign(x, y);
+					break;
+				case "swap" :
+					x = Integer.parseInt(st.nextToken()) - 1;
+					y = Integer.parseInt(st.nextToken()) - 1;
+					swap(x, y);
+					break;
+				case "reset" :
+					x = Integer.parseInt(st.nextToken()) - 1;
+					reset(x);
+					break;
+			}
 		}
 
-		for (int i = H; i >= 1; i--) {
-			down[i] += down[i+1];
+		// 3. 배열 오름차순 정렬 후 객체 개수 카운트
+		Arrays.sort(pointer);
+		int count = 0;
+		for (int i = 0; i < pointer.length; i++) {
+			if (pointer[i] == 0) continue;
+			else if (pointer[i-1] == pointer[i]) continue;
+			sb.append(pointer[i] + "\n");
+			count++;
 		}
 
-		min = N;
+		// 4. 출력
+		bw.write(count + "\n");
+		bw.write(sb.toString());
 
-		for(int i = 1; i <= H; i++) {
-
-			//구간에 대한 카운트
-			int upCnt = up[H]-up[i-1];
-			int downCnt = down[1]-down[i+1];
-
-			int totalCnt = upCnt + downCnt;
-
-			if(totalCnt < min) {
-				min = totalCnt;
-				count = 1;
-			}else if(totalCnt == min)
-				count++;
-
-		}
-		System.out.println(min + " "+ count);
-
+		br.close();
+		bw.close();
 	}
+
+	private static void assign (int x, int y) {
+		pointer[x] = pointer[y];
+	}
+	private static void swap (int x, int y) {
+		int temp = pointer[x];
+		pointer[x] = pointer[y];
+		pointer[y] = temp;
+	}
+	private static void reset (int x) {
+		pointer[x] = 0;
+	}
+
 }
 
 /*
