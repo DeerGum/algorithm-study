@@ -1,5 +1,9 @@
 package study.nathan_algo_study.week46;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * 문제이름 : 최소직사각형
  * 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/86491
@@ -7,10 +11,22 @@ package study.nathan_algo_study.week46;
 
 public class Programmers_최소직사각형 {
     public int solution(int[][] sizes) {
-        int answer = 0;
+        List<Integer> minSize = new ArrayList<>();
+        List<Integer> maxSize = new ArrayList<>();
 
+        for (int[] size : sizes) {
+            minSize.add(Arrays.stream(size)
+                    .min()
+                    .getAsInt());
+            maxSize.add(Arrays.stream(size)
+                    .max()
+                    .getAsInt());
+        }
 
-        return answer;
+        int row = minSize.stream().mapToInt(x -> x).max().getAsInt();
+        int col = maxSize.stream().mapToInt(x -> x).max().getAsInt();
+
+        return row * col;
     }
 }
 
