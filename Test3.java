@@ -7,12 +7,11 @@ import java.util.Optional;
 public class Test3 {
     public static void main(String[] args) throws IOException {
 
-        long result = 1;
-        for (int i = 1; i <= 20; i++) {
-            result *= i;
-            System.out.println(result);
-        }
-
+        char[] letters = new char[26];
+        Arrays.fill(letters, 'a');
+        letters[1]++;
+        letters[5]+= 5;
+        System.out.println(String.valueOf(letters));
 
 
     }
