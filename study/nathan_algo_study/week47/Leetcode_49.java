@@ -10,7 +10,7 @@ import java.util.Map;
  * 링크 : https://leetcode.com/problems/group-anagrams/
  */
 
-public class leetcode_49 {
+public class Leetcode_49 {
     public List<List<String>> groupAnagrams(String[] strs) {
         int[] alphabets;
         Map<String, List<String>> map = new HashMap<>();

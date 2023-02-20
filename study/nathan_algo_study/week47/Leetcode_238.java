@@ -5,7 +5,7 @@ package study.nathan_algo_study.week47;
  * 링크 : https://leetcode.com/problems/product-of-array-except-self/
  */
 
-public class leetcode_238 {
+public class Leetcode_238 {
     public int[] productExceptSelf(int[] nums) {
         int n = nums.length;
         int[] result = new int[n];

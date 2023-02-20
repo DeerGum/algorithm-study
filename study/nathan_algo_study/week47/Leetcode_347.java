@@ -7,7 +7,7 @@ import java.util.*;
  * 링크 : https://leetcode.com/problems/top-k-frequent-elements/
  */
 
-public class leetcode_347 {
+public class Leetcode_347 {
     public int[] topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> numFrequents = new HashMap<>();
 

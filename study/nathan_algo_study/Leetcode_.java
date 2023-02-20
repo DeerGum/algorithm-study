@@ -5,7 +5,7 @@ package study.nathan_algo_study;
  * 링크 : https://leetcode.com/problems/
  */
 
-public class leetcode_ {
+public class Leetcode_ {
 
 }
 
