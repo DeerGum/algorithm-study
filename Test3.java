@@ -1,22 +1,17 @@
-import java.io.*;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 
 
 public class Test3 {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
-        char[] letters = new char[26];
-        Arrays.fill(letters, 'a');
-        letters[1]++;
-        letters[5]+= 5;
-        System.out.println(String.valueOf(letters));
+        List<Integer> list = Arrays.asList(5, 6, 2, 8, 1, 7, 4);
+        Comparator<Integer> comparator = (o1, o2) -> o2.compareTo(o1);
+        list.sort(comparator);
 
-
+        System.out.println(list);
     }
-
-
 }
 
 /*
