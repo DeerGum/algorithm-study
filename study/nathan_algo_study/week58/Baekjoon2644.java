@@ -19,9 +19,7 @@ public class Baekjoon2644 {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st;
-
 
         N = Integer.parseInt(br.readLine());
         st = new StringTokenizer(br.readLine());
