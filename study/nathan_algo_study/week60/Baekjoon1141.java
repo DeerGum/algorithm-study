@@ -11,8 +11,6 @@ import java.util.*;
 public class Baekjoon1141 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        StringTokenizer st;
 
         List<String> input = new ArrayList<>();
 
@@ -22,19 +20,53 @@ public class Baekjoon1141 {
 
         input.sort(Comparator.comparingInt(String::length).reversed());
 
+        Trie trie = new Trie();
 
+        int cnt = 0;
+        for (int i = 0; i < n; i++) {
+            if (trie.isPrefix(input.get(i)))
+                continue;
+
+            trie.insert(input.get(i));
+            cnt++;
+        }
+
+        System.out.println(cnt);
     }
 }
 
-class Tree {
-    public char value;
-    public Tree next;
+class Node {
+    public Map<Character, Node> childs = new HashMap<>();
+    public boolean endOfWord = false;
+}
 
-    public Tree() {
-        this.value = 0;
-        this.next = null;
+class Trie {
+    private Node root;
+
+    public Trie() {
+        root = new Node();
     }
 
+    public boolean isPrefix(String word) {
+        Node curr = this.root;
+
+        for (int i = 0; i < word.length(); i++) {
+            if (!curr.childs.containsKey(word.charAt(i)))
+                return false;
+
+            curr = curr.childs.get(word.charAt(i));
+        }
+
+        return true;
+    }
+
+    public void insert(String word) {
+        Node curr = this.root;
+
+        for (int i = 0; i < word.length(); i++) {
+            curr = curr.childs.computeIfAbsent(word.charAt(i), c -> new Node());
+        }
+    }
 }
 
 /*
