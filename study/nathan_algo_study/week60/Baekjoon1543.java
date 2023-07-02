@@ -1,12 +1,7 @@
 package study.nathan_algo_study.week60;
 
-
-
-/*
-
-*/
 import java.io.*;
-        import java.util.StringTokenizer;
+import java.util.StringTokenizer;
 
 /**
  * 문제이름 : 문서 검색
@@ -42,3 +37,7 @@ public class Baekjoon1543 {
         System.out.println(cnt);
     }
 }
+
+/*
+
+*/
